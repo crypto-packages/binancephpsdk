@@ -28,7 +28,7 @@
         "crypto-packages/guzzle-jsonrpc": "dev-master",
         "bitwasp/buffertools": "^0.5.7",
         "google/protobuf": "^3.11",
-        "brick/math": "^0.8.14",
+        "brick/math": "^0.8|^0.9",
         "bitwasp/bitcoin": "^1.0",
         "ramsey/uuid": "^4.0",
         "php": ">=7.0"
