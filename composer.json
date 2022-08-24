@@ -29,7 +29,7 @@
         "bitwasp/buffertools": "^0.5.7",
         "google/protobuf": "^3.11",
         "brick/math": "^0.8|^0.9",
-        "bitwasp/bitcoin": "^1.0",
+        "protonlabs/bitcoin": "1.0.x-dev",
         "ramsey/uuid": "^4.0",
         "php": ">=7.0"
     }
