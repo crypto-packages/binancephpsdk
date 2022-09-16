@@ -72,7 +72,8 @@ class BncClient {
         $accCode = $address->DecodeAddress($fromAddress);
         $toAccCode = $address->DecodeAddress($toAddress);
         
-        $amount = strval(BigDecimal::of($amount)->multipliedBy(BASENUMBER));
+        # $amount = strval(BigDecimal::of($amount)->multipliedBy(BASENUMBER));
+
         $validateHelper = new ValidateHelper();
         $validateHelper->checkNumber($amount, "amount");
 
