@@ -2,6 +2,7 @@
 
 namespace Binance\Client;
 
+use Binance\Client\HttpClient;
 use GuzzleHttp;
 use Binance\Crypto\Bech32;
 use Binance\Crypto\Address;
@@ -10,7 +11,6 @@ use Binance\Utils\ValidateHelper;
 use Brick\Math\BigDecimal;
 use Binance\Client\AbciRequest;
 use Binance\Tx\Transaction;
-use Binance\Client\HttpClient;
 use Binance\Exception;
 use Binance\Types\Byte;
 
@@ -305,7 +305,7 @@ class BncClient {
    * @param {String} address
    * @param {Number} sequence optional sequence
    * @param {String} memo optional memo
-   * @return {Transaction} signed transaction
+   * @return {TransactionRaw} signed Raw transaction
    */
     function _prepareTransaction($msg, $stdSignMsg, $address, $sequence = null, $memo = "", $msgType = null) {
         if ((!$this->account_number || ($sequence !== 0 && !$sequence)) && $address) {
@@ -361,8 +361,18 @@ class BncClient {
         }else if($msg->msgType == "SetAccountFlagsMsg"){
             $txToPost = $signedTx->serializeSetAccountFlags();
         }
+        return $txToPost;
+    }
+
+    /**
+     * sending serialized raw transaction to the blockchain.
+     * @param {String} signed Raw transaction
+     * @return {Transaction} signed transaction
+     */
+    public function broadcastRawTx($signedRawTx)
+    {
         $httpClient = new HttpClient($this->network);
-        $result = $httpClient->Sendpost($this->api['broadcast'], $txToPost, true);
+        $result = $httpClient->Sendpost($this->api['broadcast'], $signedRawTx, true);
         return $result;
     }
 
