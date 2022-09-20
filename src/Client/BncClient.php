@@ -378,6 +378,26 @@ class BncClient {
     }
 
     /**
+     * Set the client with the chain's ID.
+     * @param {String} chainId
+     * @return {Promise}
+     */
+    function setChainId($chainId) {
+        $this->chainId = $chainId;
+        return $this;
+    }
+
+    /**
+     * Set the client account's Number.
+     * @param {String} accountNumber
+     * @return {Promise}
+     */
+    function setAccountNumber($accountNumber) {
+        $this->account_number = $accountNumber;
+        return $this;
+    }
+
+    /**
      * Sets the client network (testnet or mainnet).
      * @param {String} network Indicate testnet or mainnet
      */
