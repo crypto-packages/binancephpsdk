@@ -16,7 +16,8 @@ class ValidateHelper {
                 throw new Exception($name ." should be less than 2^63");
             }
         } catch (Exception $e) {
-            echo 'Caught exception: ',  $e->getMessage(), "\n";
+            // echo 'Caught exception: ',  $e->getMessage(), "\n";
+            throw $e;
         }
     }
 }
